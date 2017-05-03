@@ -4,7 +4,8 @@
     function ControllerFn($scope, User, $location) {
         $scope.user = {};
         $scope.user.car = {};
-        $scope.user.car.last_path =[];
+        $scope.user.car.last_path =[{"x": 36.89813840712984,
+            "y": 10.179297029972076}];
         $scope.user.car.mistakes =[];
         $scope.user.car.last_diagnostics = {
             "rpm": 0,
