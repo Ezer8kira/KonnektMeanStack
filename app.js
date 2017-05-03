@@ -30,6 +30,9 @@ app.use('/api', expressJwt({secret: 'teme'}).unless({path: ['/api/users/login','
 app.use('/admin',function(req,res){
     res.sendFile(path.join(path.join(__dirname, 'public/admin/index.html')));
 });
+app.use('/',function(req,res){
+    res.redirect('/user');
+})
 app.use('/user',function(req,res){
     res.sendFile(path.join(path.join(__dirname, 'public/user/index.html')));
 });
