@@ -1,15 +1,19 @@
 (function (angular) {
     'use strict';
 
-    function ControllerFn($scope,$state, User) {
+    function ControllerFn($scope, $state, User) {
         $scope.user = {};
-        $scope.login = function(){
+        $scope.login = function () {
             var user = new User($scope.user);
-            user.$login().then(function(data){
-                if(data.status){
-                    $state.go('admin');
-                    sessionStorage.user = JSON.stringify(data.user);
-                }else {
+            user.$login().then(function (data) {
+                if (data.status) {
+                    if (data.user.login == 'admin') {
+                        sessionStorage.userAdmin = JSON.stringify(data.user);
+                        $state.go('admin');
+                    }
+                    else
+                        $scope.user = {};
+                } else {
                     $scope.user = {};
                 }
             })
@@ -17,6 +21,6 @@
 
     }
 
-    ControllerFn.$inject = ['$scope','$state', 'User'];
+    ControllerFn.$inject = ['$scope', '$state', 'User'];
     angular.module("meanstackadmin").controller("loginController", ControllerFn);
 })(angular);

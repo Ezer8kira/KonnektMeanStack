@@ -4,7 +4,7 @@
     angular.module('meanstackadmin').run(['$rootScope', '$state', function ($rootScope, $state) {
         $rootScope.$on('$stateChangeStart', function (event, toState, toParams, fromState, fromParams, options) {
             if (!(toState.name == 'login')) {
-                if (!sessionStorage.user) {
+                if (!sessionStorage.userAdmin) {
                     event.preventDefault();
                     $state.go('login');
                 }

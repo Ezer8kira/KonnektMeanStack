@@ -52,7 +52,7 @@
                 }
             });
             ///Get Logged In User
-            $scope.user = JSON.parse(sessionStorage.user);
+            $scope.user = JSON.parse(sessionStorage.userAdmin);
             ///Map Init
             if ($scope.user.car.last_path.length > 0) {
                 var latlng = new google.maps.LatLng($scope.user.car.last_path[0].x, $scope.user.car.last_path[0].y);
