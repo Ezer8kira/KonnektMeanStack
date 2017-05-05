@@ -241,7 +241,7 @@
                       </tr>
                       <tr>
                           <td>Score:</td>
-                          <td>{{user.score*100}}%
+                          <td>{{score*100}}%
                           </td>
                       </tr>
 
@@ -254,7 +254,7 @@
 
                 <div class="tab" style="margin-top: 23em; width: 30em;">
   <button class="tablinks" ng-click="openCity($event, 'London')">Car Diagnostics</button>
-  <button class="tablinks" ng-click="openCity($event, 'Paris')">Mistakes made in last ride {{mistake}}</button>
+  <button class="tablinks" ng-click="openCity($event, 'Paris')">Mistakes made in last ride and scores</button>
   <button class="tablinks" ng-click="openCity($event, 'Tokyo')"></button>
 </div>
 <div id="London" class="tabcontent">
@@ -379,6 +379,22 @@
                   </table>
              
               </div>
+    <div  style="float:center;">
+
+        <table class="table table-user-information">
+            <tbody>
+            <tr>
+                <th>Path</th>
+                <th>Score</th>
+            </tr>
+            <tr ng-repeat="score in scores track by $index">
+                <td>{{$index +1 }}</td>
+                <td>{{score}}</td>
+            </tr>
+            </tbody>
+        </table>
+
+    </div>
 </div>
 
 

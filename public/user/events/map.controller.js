@@ -65,7 +65,17 @@
             function placeMarker(location) {
                 var marker = new google.maps.Marker({
                     position: location,
-                    draggable: true,
+                    draggable: false,
+                    map: map
+                });
+                $scope.user.car.last_path.push({x: location.lat(), y: location.lng()});
+                return marker;
+            }
+			function placeMarkerCar(location) {
+                var marker = new google.maps.Marker({
+                    position: location,
+                    draggable: false,
+					icon: './images/car-icons.png',
                     map: map
                 });
                 $scope.user.car.last_path.push({x: location.lat(), y: location.lng()});
@@ -90,7 +100,7 @@
                     var speed = 25 - (Math.floor($scope.speed / 10));
                     var counter = 0;
                     var idx = 0;
-                    var car = placeMarker(new google.maps.LatLng($scope.user.car.last_path[0].x, $scope.user.car.last_path[0].y));
+                    var car = placeMarkerCar(new google.maps.LatLng($scope.user.car.last_path[0].x, $scope.user.car.last_path[0].y));
                     var interval = setInterval(function () {
                         var x = ((($scope.user.car.last_path[idx + 1].x - $scope.user.car.last_path[idx].x) * counter) / speed) + $scope.user.car.last_path[idx].x;
                         var y = ((($scope.user.car.last_path[idx + 1].y - $scope.user.car.last_path[idx].y) * counter) / speed) + $scope.user.car.last_path[idx].y;
@@ -147,9 +157,16 @@
                                 clearInterval(interval);
                                 car = null;
                                 $scope.user.car.last_path.pop();
-                                $scope.user.score = ($scope.user.score + (1- $scope.passed+$scope.miss))/2;
-                                if($scope.user.score<0){
-                                    $scope.user.score=0;
+								if($scope.passed==0)
+									$scope.user.scores.push (1);
+								else
+                                $scope.user.scores.push ($scope.miss/$scope.passed);
+								
+								
+								
+								for (var i = 0; i < $scope.user.scores.length; i++) {
+										if($scope.user.scores[i]<0)
+											$scope.user.scores[i]=0;
                                 }
                                 var persist = new User($scope.user);
                                 persist.$update().then(function (data) {

@@ -13,6 +13,13 @@
         function selectAll() {
             User.query().$promise.then(function (data) {
                 $scope.users = data;
+                for (var i = 0; i < $scope.users.length; i++) {
+                    var score = 0;
+                    for (var j = 0; j < $scope.users[i].scores.length; j++) {
+                        score = score + $scope.users[i].scores[j];
+                    }
+                    $scope.users[i].scorex= (score/$scope.users[i].scores.length).toFixed(6);
+                }
             });
         }
 

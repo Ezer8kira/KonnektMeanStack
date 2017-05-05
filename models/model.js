@@ -9,7 +9,7 @@ var UserSchema = new Schema({
     home : String,
     email : String,
     number : String,
-    score : Number,
+    scores : [Number],
     car : { buying_date : String,
         fabrication_birth : String,
         power : String,

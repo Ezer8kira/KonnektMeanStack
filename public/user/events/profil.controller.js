@@ -13,9 +13,12 @@
         $scope.oxygenss = [];
         $scope.oxygenssh = [];
         $scope.egrss = [];
+        $scope.scores = [];
+        $scope.score = 0;
         function selectAll() {
             Suggest.query().$promise.then(function (data) {
                 $scope.suggests = data;
+
 
                 for (var i = 0; i < $scope.suggests.length; i++) {
 
@@ -45,7 +48,15 @@
 
         var getUser = function () {
             $scope.user = JSON.parse(sessionStorage.user);
+            var score = 0;
+            for (var i = 0; i < $scope.user.scores.length; i++) {
+            score = score + $scope.user.scores[i];
+            }
+
+            $scope.score = (score/$scope.user.scores.length).toFixed(6);
             $scope.mistakes = $scope.user.car.mistakes;
+            $scope.scores = $scope.user.scores;
+            console.log($scope.scores);
             $scope.misfire = $scope.user.car.last_diagnostics.misfire;
             $scope.egr_system = $scope.user.car.last_diagnostics.egr_system;
             $scope.oxygen_sensor_heater = $scope.user.car.last_diagnostics.oxygen_sensor_heater;

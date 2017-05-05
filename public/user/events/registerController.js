@@ -7,7 +7,7 @@
         $scope.user.car.last_path =[{"x": 36.89813840712984,
             "y": 10.179297029972076}];
         $scope.user.car.mistakes =[];
-        $scope.user.score =1;
+        $scope.user.scores =[1];
         $scope.user.car.last_diagnostics = {
             "rpm": 0,
                 "egr_system": false,

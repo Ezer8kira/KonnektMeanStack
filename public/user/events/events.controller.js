@@ -231,7 +231,7 @@
                         latitude: latitude,
                         longitude: longitude,
                         title: 'm' + i,
-                        icon: 'http://img.stockfresh.com/files/u/ustofre9/x/80/2668726_77611761.jpg'
+                        icon:'images/speed.jpg'
                     };
                     ret[idKey] = i;
                     return ret;
