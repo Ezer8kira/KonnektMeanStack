@@ -12,7 +12,7 @@ var mongoose = require('mongoose');
 var app = express();
 app.use(cors());
 
-mongoose.connect('mongodb://root:root@ds133340.mlab.com:33340/pidev');
+mongoose.connect('mongodb+srv://ezer:azerty8@cluster0.5ql9p.mongodb.net/pidev?retryWrites=true&w=majority');
 //mongoose.connect('mongodb://localhost/pidev');
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
